@@ -38,7 +38,6 @@ Descrever o sistema para o gerenciamento de treinamentos para empresas.
   - Nome
   - Validade
   - Funções (lista de funções relacionadas ao curso)
-  - Sessões (lista de sessões)
   - Carga Horária (diferenciada para formação e reciclagem)
   - Nível
 
