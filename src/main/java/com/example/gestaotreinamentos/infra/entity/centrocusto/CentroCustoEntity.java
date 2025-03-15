@@ -1,4 +1,4 @@
-package com.example.gestaotreinamentos.infra.entity.centroCusto;
+package com.example.gestaotreinamentos.infra.entity.centrocusto;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

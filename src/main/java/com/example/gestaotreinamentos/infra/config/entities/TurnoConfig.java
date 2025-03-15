@@ -1,4 +1,4 @@
-package com.example.gestaotreinamentos.infra.config;
+package com.example.gestaotreinamentos.infra.config.entities;
 
 import com.example.gestaotreinamentos.application.gateway.turno.TurnoGateway;
 import com.example.gestaotreinamentos.application.usecaseimpl.turno.deleteById.DeleteTurnoByIdUsecaseImpl;

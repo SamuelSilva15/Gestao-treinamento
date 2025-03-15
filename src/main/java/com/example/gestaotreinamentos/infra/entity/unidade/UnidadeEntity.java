@@ -1,10 +1,7 @@
 package com.example.gestaotreinamentos.infra.entity.unidade;
 
-import com.example.gestaotreinamentos.core.domain.empresa.Empresa;
-import com.example.gestaotreinamentos.infra.entity.centroCusto.CentroCustoEntity;
-import com.example.gestaotreinamentos.infra.entity.empresa.EmpresaEntity;
+import com.example.gestaotreinamentos.infra.entity.centrocusto.CentroCustoEntity;
 import com.example.gestaotreinamentos.infra.entity.funcao.FuncaoEntity;
-import com.example.gestaotreinamentos.infra.entity.funcionario.FuncionarioEntity;
 import com.example.gestaotreinamentos.infra.entity.setor.SetorEntity;
 import com.example.gestaotreinamentos.infra.entity.turno.TurnoEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,8 +9,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Data

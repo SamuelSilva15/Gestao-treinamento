@@ -1,7 +1,7 @@
 package com.example.gestaotreinamentos.infra.entity.funcionario;
 
 import com.example.gestaotreinamentos.core.domain.enums.EnumSituacao;
-import com.example.gestaotreinamentos.infra.entity.centroCusto.CentroCustoEntity;
+import com.example.gestaotreinamentos.infra.entity.centrocusto.CentroCustoEntity;
 import com.example.gestaotreinamentos.infra.entity.funcao.FuncaoEntity;
 import com.example.gestaotreinamentos.infra.entity.setor.SetorEntity;
 import com.example.gestaotreinamentos.infra.entity.turno.TurnoEntity;
@@ -10,8 +10,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Data

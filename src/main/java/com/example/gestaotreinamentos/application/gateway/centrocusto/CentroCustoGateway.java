@@ -1,7 +1,7 @@
 package com.example.gestaotreinamentos.application.gateway.centrocusto;
 
 import com.example.gestaotreinamentos.core.domain.centrocusto.CentroCusto;
-import com.example.gestaotreinamentos.infra.entity.centroCusto.CentroCustoEntity;
+import com.example.gestaotreinamentos.infra.entity.centrocusto.CentroCustoEntity;
 
 import java.util.List;
 

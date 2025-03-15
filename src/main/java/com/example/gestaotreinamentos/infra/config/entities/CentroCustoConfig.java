@@ -1,4 +1,4 @@
-package com.example.gestaotreinamentos.infra.config;
+package com.example.gestaotreinamentos.infra.config.entities;
 
 import com.example.gestaotreinamentos.application.gateway.centrocusto.CentroCustoGateway;
 import com.example.gestaotreinamentos.application.usecaseimpl.centrocusto.deleteById.DeleteCentroCustoByIdUsecaseImpl;

@@ -1,7 +1,7 @@
 package com.example.gestaotreinamentos.infra.controller;
 
 import com.example.gestaotreinamentos.core.domain.centrocusto.CentroCusto;
-import com.example.gestaotreinamentos.infra.entity.centroCusto.CentroCustoEntity;
+import com.example.gestaotreinamentos.infra.entity.centrocusto.CentroCustoEntity;
 import com.example.gestaotreinamentos.usecase.centrocusto.SaveCentroCustoUsecase;
 import com.example.gestaotreinamentos.usecase.centrocusto.deleteById.DeleteCentroCustoByIdUsecase;
 import com.example.gestaotreinamentos.usecase.centrocusto.findAll.FindAllCentroCustosUsecase;

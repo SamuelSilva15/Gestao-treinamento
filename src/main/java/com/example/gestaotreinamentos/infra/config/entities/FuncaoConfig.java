@@ -1,4 +1,4 @@
-package com.example.gestaotreinamentos.infra.config;
+package com.example.gestaotreinamentos.infra.config.entities;
 
 import com.example.gestaotreinamentos.application.gateway.funcao.FuncaoGateway;
 import com.example.gestaotreinamentos.application.usecaseimpl.funcao.deleteById.DeleteFuncaoByIdUsecaseImpl;

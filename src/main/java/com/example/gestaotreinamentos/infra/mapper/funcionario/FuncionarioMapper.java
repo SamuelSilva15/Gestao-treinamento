@@ -5,7 +5,7 @@ import com.example.gestaotreinamentos.core.domain.funcao.Funcao;
 import com.example.gestaotreinamentos.core.domain.funcionario.Funcionario;
 import com.example.gestaotreinamentos.core.domain.setor.Setor;
 import com.example.gestaotreinamentos.core.domain.turno.Turno;
-import com.example.gestaotreinamentos.infra.entity.centroCusto.CentroCustoEntity;
+import com.example.gestaotreinamentos.infra.entity.centrocusto.CentroCustoEntity;
 import com.example.gestaotreinamentos.infra.entity.funcao.FuncaoEntity;
 import com.example.gestaotreinamentos.infra.entity.funcionario.FuncionarioEntity;
 import com.example.gestaotreinamentos.infra.entity.setor.SetorEntity;

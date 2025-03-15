@@ -3,7 +3,7 @@ package com.example.gestaotreinamentos.infra.service.centrocusto;
 import com.example.gestaotreinamentos.application.gateway.centrocusto.CentroCustoGateway;
 import com.example.gestaotreinamentos.core.domain.centrocusto.CentroCusto;
 import com.example.gestaotreinamentos.core.exception.centrocusto.CentroCustoNotFoundException;
-import com.example.gestaotreinamentos.infra.entity.centroCusto.CentroCustoEntity;
+import com.example.gestaotreinamentos.infra.entity.centrocusto.CentroCustoEntity;
 import com.example.gestaotreinamentos.infra.mapper.CentroCustoMapper;
 import com.example.gestaotreinamentos.infra.repository.centrocusto.CentroCustoRepository;
 import org.springframework.stereotype.Service;

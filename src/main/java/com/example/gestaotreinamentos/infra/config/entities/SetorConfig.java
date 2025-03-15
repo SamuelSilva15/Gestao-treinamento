@@ -1,4 +1,4 @@
-package com.example.gestaotreinamentos.infra.config;
+package com.example.gestaotreinamentos.infra.config.entities;
 
 import com.example.gestaotreinamentos.application.gateway.setor.SetorGateway;
 import com.example.gestaotreinamentos.application.usecaseimpl.setor.deleteById.DeleteSetorByIdUsecaseImpl;
