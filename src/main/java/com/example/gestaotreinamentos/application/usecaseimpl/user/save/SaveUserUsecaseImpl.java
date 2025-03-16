@@ -12,7 +12,7 @@ public class SaveUserUsecaseImpl implements SaveUserUsecase {
         this.userGateway = userGateway;
     }
 
-    public void execute(User user) {
-        this.userGateway.save(user);
+    public User execute(User user) {
+       return this.userGateway.save(user);
     }
 }

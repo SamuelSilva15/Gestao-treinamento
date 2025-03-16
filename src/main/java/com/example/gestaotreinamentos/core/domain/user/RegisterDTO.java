@@ -1,4 +1,6 @@
 package com.example.gestaotreinamentos.core.domain.user;
 
-public record RegisterDTO(String email, String password, String role) {
+import com.example.gestaotreinamentos.core.domain.enums.EnumUserRole;
+
+public record RegisterDTO(String name, String email, String password, EnumUserRole role) {
 }

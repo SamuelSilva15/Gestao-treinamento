@@ -1,8 +1,10 @@
 package com.example.gestaotreinamentos.infra.controller.auth;
 
 import com.example.gestaotreinamentos.core.domain.user.AuthorizationDTO;
+import com.example.gestaotreinamentos.core.domain.user.LoginResponseDTO;
 import com.example.gestaotreinamentos.core.domain.user.RegisterDTO;
 import com.example.gestaotreinamentos.infra.entity.user.User;
+import com.example.gestaotreinamentos.infra.service.TokenService;
 import com.example.gestaotreinamentos.usecase.user.findByEmail.FindUserDetailsByEmailUsecase;
 import com.example.gestaotreinamentos.usecase.user.save.SaveUserUsecase;
 import org.springframework.http.HttpStatus;
@@ -25,37 +27,37 @@ public class AuthorizationController {
     private final AuthenticationManager authenticationManager;
     private final FindUserDetailsByEmailUsecase findUserDetailsByEmailUsecase;
     private final SaveUserUsecase saveUserUsecase;
+    private final TokenService tokenService;
 
-    public AuthorizationController(AuthenticationManager authenticationManager, FindUserDetailsByEmailUsecase findUserDetailsByEmailUsecase, SaveUserUsecase saveUserUsecase) {
+    public AuthorizationController(AuthenticationManager authenticationManager, FindUserDetailsByEmailUsecase findUserDetailsByEmailUsecase, SaveUserUsecase saveUserUsecase, TokenService tokenService) {
         this.authenticationManager = authenticationManager;
         this.findUserDetailsByEmailUsecase = findUserDetailsByEmailUsecase;
         this.saveUserUsecase = saveUserUsecase;
+        this.tokenService = tokenService;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<HttpStatus> authorize(@RequestBody @Validated AuthorizationDTO authorizationDTO) {
-        try {
-            var usernamePassword = new UsernamePasswordAuthenticationToken(authorizationDTO.email(), authorizationDTO.password());
-            var auth = this.authenticationManager.authenticate(usernamePassword);
+    public ResponseEntity login(@RequestBody @Validated AuthorizationDTO data){
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
+        var auth = this.authenticationManager.authenticate(usernamePassword);
 
-            return ResponseEntity.ok().body(HttpStatus.OK);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<HttpStatus> authorize(@RequestBody @Validated RegisterDTO registerDTO) {
+    public ResponseEntity<User> authorize(@RequestBody @Validated RegisterDTO registerDTO) {
         try {
             if(Objects.nonNull(this.findUserDetailsByEmailUsecase.execute(registerDTO.email()))) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
             }
 
             String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.password());
-            User user = new User(registerDTO.email(), encryptedPassword, registerDTO.role());
+            User user = new User(registerDTO.name(), registerDTO.email(), encryptedPassword, registerDTO.role());
 
-            this.saveUserUsecase.execute(user);
-            return ResponseEntity.status(HttpStatus.CREATED).body(HttpStatus.CREATED);
+            User userSaved = this.saveUserUsecase.execute(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(userSaved);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

@@ -1,7 +1,9 @@
 package com.example.gestaotreinamentos.usecase.user.findById;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import com.example.gestaotreinamentos.infra.entity.user.User;
+
+import java.util.Optional;
 
 public interface FindUserDetailsByIdUsecase {
-    UserDetails findById(Long userId);
+    Optional<User> findById(Long userId);
 }

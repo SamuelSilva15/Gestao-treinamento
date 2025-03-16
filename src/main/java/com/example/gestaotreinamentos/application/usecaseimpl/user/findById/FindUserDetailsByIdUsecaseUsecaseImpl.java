@@ -1,8 +1,10 @@
 package com.example.gestaotreinamentos.application.usecaseimpl.user.findById;
 
 import com.example.gestaotreinamentos.application.gateway.user.UserGateway;
+import com.example.gestaotreinamentos.infra.entity.user.User;
 import com.example.gestaotreinamentos.usecase.user.findById.FindUserDetailsByIdUsecase;
-import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Optional;
 
 public class FindUserDetailsByIdUsecaseUsecaseImpl implements FindUserDetailsByIdUsecase {
 
@@ -13,7 +15,7 @@ public class FindUserDetailsByIdUsecaseUsecaseImpl implements FindUserDetailsByI
     }
 
     @Override
-    public UserDetails findById(Long userId) {
+    public Optional<User> findById(Long userId) {
         return userGateway.findById(userId);
     }
 }

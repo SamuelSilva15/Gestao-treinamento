@@ -6,6 +6,8 @@ import com.example.gestaotreinamentos.infra.repository.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserGatewayImpl implements UserGateway {
 
@@ -16,8 +18,8 @@ public class UserGatewayImpl implements UserGateway {
     }
 
     @Override
-    public UserDetails findById(Long userId) {
-        return userRepository.findByUserId(userId);
+    public Optional<User> findById(Long userId) {
+        return userRepository.findById(userId);
     }
 
     @Override
@@ -26,7 +28,7 @@ public class UserGatewayImpl implements UserGateway {
     }
 
     @Override
-    public void save(User user) {
-         this.userRepository.save(user);
+    public User save(User user) {
+         return this.userRepository.save(user);
     }
 }

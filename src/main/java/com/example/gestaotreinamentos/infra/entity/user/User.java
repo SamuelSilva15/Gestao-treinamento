@@ -1,16 +1,14 @@
 package com.example.gestaotreinamentos.infra.entity.user;
 
 import com.example.gestaotreinamentos.core.domain.enums.EnumUserRole;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,35 +17,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Entity
-@Data
-@AllArgsConstructor
+@Table(name = "users")
+@Entity(name = "users")
+@Getter
 @NoArgsConstructor
-@Table(name = "USER_SYSTEM")
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "US_ID")
-    private Long userId;
-
-    @Column(name = "US_NAME")
-    private String name;
-
-    @Column(name = "US_EMAIL")
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     private String email;
-
-    @Column(name = "US_PASSWORD")
     private String password;
-
-    @Column(name = "US_ROLE")
-    @Enumerated(EnumType.STRING)
     private EnumUserRole role;
 
-    public User(String email, String password, String role) {
+    public User(String email, String password, EnumUserRole role){
         this.email = email;
         this.password = password;
-        this.role = EnumUserRole.valueOf(role);
+        this.role = role;
     }
 
     @Override
@@ -58,6 +45,26 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.email;
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
