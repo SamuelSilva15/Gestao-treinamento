@@ -1,6 +1,7 @@
 package com.example.gestaotreinamentos.application.usecaseimpl.user.save;
 
 import com.example.gestaotreinamentos.application.gateway.user.UserGateway;
+import com.example.gestaotreinamentos.core.domain.user.RegisterDTO;
 import com.example.gestaotreinamentos.infra.entity.user.User;
 import com.example.gestaotreinamentos.usecase.user.save.SaveUserUsecase;
 
@@ -12,7 +13,7 @@ public class SaveUserUsecaseImpl implements SaveUserUsecase {
         this.userGateway = userGateway;
     }
 
-    public User execute(User user) {
-       return this.userGateway.save(user);
+    public User execute(RegisterDTO registerDTO) {
+       return this.userGateway.save(registerDTO);
     }
 }

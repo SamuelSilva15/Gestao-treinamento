@@ -1,7 +1,7 @@
 package com.example.gestaotreinamentos.infra.config.security;
 
 import com.example.gestaotreinamentos.infra.repository.user.UserRepository;
-import com.example.gestaotreinamentos.infra.service.TokenService;
+import com.example.gestaotreinamentos.usecase.token.validate.ValidateTokenUsecase;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
-    TokenService tokenService;
+    ValidateTokenUsecase validateToken;
 
     @Autowired
     UserRepository userRepository;
@@ -28,7 +28,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var token = this.recoverToken(request);
         if(token != null){
-            var login = tokenService.validateToken(token);
+            var login = validateToken.execute(token);
             UserDetails user = userRepository.findByEmail(login);
 
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
